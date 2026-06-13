@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Spreetail Splitwise Clone
 
-## Getting Started
+A full-stack, real-time financial utility application designed to track shared expenses and balances among friends, roommates, and groups. Built as part of the Spreetail Software Engineering Internship Assessment.
 
-First, run the development server:
+🔗 **[Live Public URL]** -> *(Paste your Vercel URL here!)*
 
+## 🚀 Tech Stack
+* **Frontend:** Next.js 14 (App Router), React, TypeScript, Tailwind CSS, shadcn/ui.
+* **Backend:** Next.js Serverless Route Handlers.
+* **Database & Auth:** Supabase (PostgreSQL), Supabase Auth.
+* **ORM:** Drizzle ORM.
+* **Real-time Engine:** Supabase Realtime (WebSockets) for live expense chats.
+
+## ✨ Core Features
+* **Authentication:** Secure login and registration via Supabase.
+* **Global Friends & Groups:** Add friends by email/name and organize them into specific share rooms.
+* **Precision Expense Engine:** Split bills 4 ways: Equally, Exact Amounts, Percentages, and Proportional Shares. Includes multi-payer support.
+* **Live Chat:** Real-time, instant messaging inside individual expenses using WebSockets.
+* **Settle Up:** Dynamic cash transaction logging to minimize and clear outstanding debts.
+* **Light/Dark Theme:** Fully responsive, accessible, and themeable UI.
+
+---
+
+## 🛠️ Local Setup Instructions
+
+To run this project locally on your machine, follow these steps:
+
+### 1. Clone the repository
 ```bash
+git clone https://github.com/YOUR_GITHUB_USERNAME/spreetail-splitwise-clone.git
+cd spreetail-splitwise-clone
+2. Install dependencies
+code
+Bash
+npm install
+3. Configure Environment Variables
+Create a .env.local file in the root directory and add your Supabase credentials:
+code
+Env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+DATABASE_URL=your_supabase_postgres_connection_string
+4. Push the Database Schema
+Ensure Drizzle ORM pushes the relational tables to your Supabase instance:
+code
+Bash
+npx drizzle-kit push
+5. Run the Development Server
+code
+Bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Open http://localhost:3000 with your browser to see the result.
+🤖 AI Collaboration Process
+As per the assignment requirements, this application was built using an AI collaborator (Cursor IDE's inbuilt agent / Claude 3.5 Sonnet).
+How I directed the AI:
+Architectural Authority: I acted as the Senior Engineer. When the AI initially suggested an overly complex Express/Vite/Cloud SQL architecture, I forced a pivot to Next.js and Supabase to guarantee deployment success within the 48-hour deadline.
+Mathematical Logic Validation: I strictly defined the math engine algorithms (Net Balance = Paid - Share) to prevent the AI from generating backwards financial logic (a common hallucination in AI coding).
+Product Vision: I directed the AI to maintain a rigorous AI_CONTEXT.md file, explicitly separating MVP features from Phase 2 product visions (UPI integrations, Dispute Voting) to manage scope creep while demonstrating product thinking.
+For complete details on the architecture, schema, and trade-offs, please view AI_CONTEXT.md and BUILD_PLAN.md included in this repository.

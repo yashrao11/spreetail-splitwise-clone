@@ -8,6 +8,7 @@ import { createClient } from '@/utils/supabase/server';
 import { db } from '@/db';
 import { users, groups, groupMembers, friends } from '@/db/schema';
 import { eq, or, and } from 'drizzle-orm';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -96,28 +97,30 @@ export default async function RootLayout({
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      style={{ colorScheme: 'light' }}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-800 selection:bg-teal-500/10 selection:text-teal-900">
-        {authenticated ? (
-          <div className="flex w-full h-screen overflow-hidden">
-            <Sidebar groups={userGroups} friends={friendsList} />
-            <div className="flex-1 flex flex-col min-w-0 bg-slate-50">
-              <header className="h-16 border-b border-slate-300 bg-white px-6 flex items-center justify-between shrink-0">
-                <span className="text-sm font-semibold text-slate-500">
-                  Welcome to Spreetail Splitwise
-                </span>
-                <ProfileDropdown userEmail={userEmail!} displayName={dbUser?.displayName} />
-              </header>
-              <main className="flex-1 overflow-y-auto p-6">{children}</main>
+      <body className="min-h-full flex flex-col bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 selection:bg-teal-500/10 selection:text-teal-900">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {authenticated ? (
+            <div className="flex w-full h-screen overflow-hidden">
+              <Sidebar groups={userGroups} friends={friendsList} />
+              <div className="flex-1 flex flex-col min-w-0 bg-slate-50 dark:bg-slate-950">
+                <header className="h-16 border-b border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 flex items-center justify-between shrink-0">
+                  <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                    Welcome to Spreetail Splitwise
+                  </span>
+                  <ProfileDropdown userEmail={userEmail!} displayName={dbUser?.displayName} />
+                </header>
+                <main className="flex-1 overflow-y-auto p-6">{children}</main>
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="flex-1 flex flex-col">
-            <Header userEmail={userEmail} />
-            <main className="flex-1 flex flex-col">{children}</main>
-          </div>
-        )}
+          ) : (
+            <div className="flex-1 flex flex-col bg-slate-50 dark:bg-slate-950">
+              <Header userEmail={userEmail} />
+              <main className="flex-1 flex flex-col">{children}</main>
+            </div>
+          )}
+        </ThemeProvider>
       </body>
     </html>
   );
