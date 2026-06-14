@@ -2,7 +2,7 @@
 
 A full-stack, real-time financial utility application designed to track shared expenses and balances among friends, roommates, and groups. Built as part of the Spreetail Software Engineering Internship Assessment.
 
-🔗 **[Live Public URL]** -> *(Paste your Vercel URL here!)*
+🔗 **[Live Public URL]** -> *(https://spreetail-splitwise-clone.vercel.app/dashboard)*
 
 ## 🚀 Tech Stack
 * **Frontend:** Next.js 14 (App Router), React, TypeScript, Tailwind CSS, shadcn/ui.
